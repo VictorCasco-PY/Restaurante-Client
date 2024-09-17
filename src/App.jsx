@@ -1,13 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import Menu from "./components/Menus/Menu";
 import Mesa from "./components/Reservas/Mesa";
+import Usuario from "./components/Usuarios/Usuario";
 
 function App() {
   return (
     <>
-      <Mesa />
+      {/*<Mesa /> */}
+      {/* <Usuario />*/}
+      {/*<Menu /> */}
     </>
   );
 }
