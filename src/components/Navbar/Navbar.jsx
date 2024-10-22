@@ -1,43 +1,113 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            RestauranteApp
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" aria-current="page" href="/">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          RestauranteApp
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
                 Inicio
-              </a>
-              <a class="nav-link" href="/reservas">
+              </Link>
+            </li>
+
+            {/* Dropdown Reservas */}
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="reservasDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Reservas
               </a>
-              <a class="nav-link" href="/menu">
+              <ul className="dropdown-menu" aria-labelledby="reservasDropdown">
+                <li>
+                  <Link className="dropdown-item" to="/reservas/crear">
+                    Crear Reserva
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/reservas/lista">
+                    Listar Reservas
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            {/* Dropdown Menus */}
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="menuDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Menus
               </a>
-              <a class="nav-link" href="/usuarios">
+              <ul className="dropdown-menu" aria-labelledby="menuDropdown">
+                <li>
+                  <Link className="dropdown-item" to="/menu/crear">
+                    Crear Menu
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/menu/lista">
+                    Listar Menus
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            {/* Dropdown Usuarios */}
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="usuariosDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Usuarios
               </a>
-            </div>
-          </div>
+              <ul className="dropdown-menu" aria-labelledby="usuariosDropdown">
+                <li>
+                  <Link className="dropdown-item" to="/usuarios/crear">
+                    Crear Usuario
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/usuarios/lista">
+                    Listar Usuarios
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
