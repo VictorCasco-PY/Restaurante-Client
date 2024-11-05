@@ -50,6 +50,11 @@ const Navbar = () => {
                     Listar Reservas
                   </Link>
                 </li>
+                <li>
+                  <Link className="dropdown-item" to="/reservas/mesas">
+                    Listar Mesas
+                  </Link>
+                </li>
               </ul>
             </li>
 

@@ -8,7 +8,7 @@ const Mesa = () => {
     const getMesas = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/mesas/page/1"
+          "http://localhost:8080/api/reservas/mesas/page/1"
         );
         setData(response.data.items);
       } catch (error) {

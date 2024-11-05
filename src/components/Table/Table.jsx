@@ -1,9 +1,16 @@
+// Table.js
 import React, { useState, useEffect } from "react";
 
 // Componente reutilizable para tablas con paginación y buscador
-const Table = ({ columns, data, itemsPerPage }) => {
+const Table = ({
+  columns,
+  data,
+  itemsPerPage,
+  totalItems,
+  currentPage,
+  setCurrentPage,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
 
   // Filtrar los datos cuando cambia el término de búsqueda
@@ -17,19 +24,21 @@ const Table = ({ columns, data, itemsPerPage }) => {
       )
     );
     setFilteredData(filtered);
-    setCurrentPage(1); // Reiniciar a la primera página cuando se realiza una búsqueda
-  }, [searchTerm, data, columns]);
+    setCurrentPage(0); // Reiniciar a la primera página (0) cuando se realiza una búsqueda
+  }, [searchTerm, data, columns, setCurrentPage]);
 
   // Calcular los índices de los elementos a mostrar en la página actual
-  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfLastItem = (currentPage + 1) * itemsPerPage; // Usamos (currentPage + 1) para la lógica
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentData = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   // Cambiar página
-  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber); // Cambia el estado de la página actual
+  };
 
   // Obtener el número total de páginas
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
     <div>
@@ -75,13 +84,13 @@ const Table = ({ columns, data, itemsPerPage }) => {
         <ul className="pagination justify-content-center">
           {Array.from({ length: totalPages }, (_, index) => (
             <li
-              key={index + 1}
-              className={`page-item ${
-                currentPage === index + 1 ? "active" : ""
-              }`}
-              onClick={() => handlePageChange(index + 1)}
+              key={index}
+              className={`page-item ${currentPage === index ? "active" : ""}`} // Cambiar a index
+              onClick={() => handlePageChange(index)} // Cambiar a index
+              style={{ cursor: "pointer" }} // Asegúrate de que el cursor se vea como un puntero
             >
-              <span className="page-link">{index + 1}</span>
+              <span className="page-link">{index + 1}</span>{" "}
+              {/* Mostrar como index + 1 */}
             </li>
           ))}
         </ul>
