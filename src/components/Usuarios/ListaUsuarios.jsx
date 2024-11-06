@@ -12,7 +12,7 @@ const ListaUsuarios = () => {
       const response = await axios.get(
         "http://localhost:8080/api/usuarios/page/0"
       );
-      setUsuarios(response.data); // Asumiendo que los usuarios están en `content`
+      setUsuarios(response.data);
     } catch (error) {
       console.error("Error obteniendo usuarios:", error);
     }

@@ -51,7 +51,12 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/reservas/mesas">
+                  <Link className="dropdown-item" to="/reservas/mesas/crear">
+                    Crear Mesa
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/reservas/mesas/lista">
                     Listar Mesas
                   </Link>
                 </li>
